@@ -44,7 +44,16 @@ with simple quicklinks and copyright.
 link.com/note/note-id - This page will have a navbar with links to the homepage and register/login. The main body content will be just the note. There will also be
 the same simple footer, with simple quicklinks and copyright.
 
-//! TODO: ADD WIREFRAMES
+![Homepage Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/docs/images/HomepageWireframe.png)
+
+![Register / Login Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/docs/images/RegiLoginWireframe.png)
+
+![Dashboard Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/docs/images/DashboardWireframe.png)
+
+![WriteNote Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/docs/images/WriteNoteWireframe.png)
+
+![ReadNote Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/docs/images/ReadNoteWireframe.png)
+
 
 6) **Architecture**: A description of the architecture of your project.  This should include a diagram of the architecture of your project.
 
