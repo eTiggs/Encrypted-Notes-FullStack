@@ -44,14 +44,19 @@ with simple quicklinks and copyright.
 link.com/note/note-id - This page will have a navbar with links to the homepage and register/login. The main body content will be just the note. There will also be
 the same simple footer, with simple quicklinks and copyright.
 
+- Home page
 ![Homepage Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/HomepageWireframe.png)
 
+- Login / Register page
 ![Register / Login Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/RegiLoginWireframe.png)
 
+- Dashboard page
 ![Dashboard Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/DashboardWireframe.png)
 
+- Write Note Page
 ![WriteNote Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/WriteNoteWireframe.png)
 
+- Read Note Page
 ![ReadNote Wireframe](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/ReadNoteWireframe.png)
 
 
