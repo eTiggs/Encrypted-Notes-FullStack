@@ -62,7 +62,11 @@ the same simple footer, with simple quicklinks and copyright.
 
 6) **Architecture**: A description of the architecture of your project.  This should include a diagram of the architecture of your project.
 
-//! TODO: FIND OUT WHAT ARCHITECTURE OF THE PROJECT MEANS AND CREATE
+I plan for this application to be a single service for each of the backend, front end and database, all seperately hosted but interconnected once deployed. I feel this is
+the best and most efficient way for this project to be hosted and handled currently due to its single use situation, however, if I was to decide to develop this into a 
+multitude of tools, or flesh out this current tool more, a collection of micro services would be better for the ease of reuse and avoid complications.
+
+![Ring Archetecture Diagram](https://github.com/digital-futures-academy-se-2404-a/challenge-6-full-stack-capstone-project-eTiggs/blob/main/docs/images/RingArchitecture.png)
 
 7) **RESTful Routing**: A list of the RESTful routes that your project will have, including the HTTP method, any headers and payloads expected in the request and the response that will be sent.
 
