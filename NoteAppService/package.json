@@ -6,7 +6,12 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=dev nodemon src/index/js",
+    "start-win": "SET NODE_ENV=dev&&nodemon src/index.js",
+    "test": "NODE_ENV=test mocha --timeout 10000 --exit --recursive",
+    "test-win": "SET NODE_ENV=test&&mocha --timeout 10000 --exit --recursive",
+    "coverage": "NODE_ENV=test c8 -r html npm test",
+    "coverage-win": "SET NODE_ENV=test&& c8 -r text npm run test-win"
   },
   "type": "module",
   "keywords": [],
@@ -18,8 +23,20 @@
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.4.3"
+    "mongoose": "^8.4.3",
+    "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "c8": "^9.1.0",
+    "chai": "^5.1.1",
+    "chai-as-promised": "^7.1.2",
+    "eslint": "^8.57.0",
+    "mocha": "^10.4.0",
+    "sinon": "^18.0.0",
+    "supertest": "^7.0.0"
   }
 }
