@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import AuthService from '../../services/authService';
+import axios from 'axios';
 
 const LoginForm = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ const LoginForm = ({ onLogin }) => {
     password: '',
     pin: ''
   });
+  const [loginError, setLoginError] = useState('');
 
   const navigate = useNavigate();
 
@@ -21,13 +22,21 @@ const LoginForm = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginError('');
+
     try {
-      const response = await AuthService.login(formData.username, formData.password, formData.pin);
-      const token = response.token;
+      const response = await axios.post('http://localhost:6969/auth/login', formData);
+      const token = response.data.token;
       onLogin(token);
       navigate('/dashboard');
     } catch (error) {
-      console.error('Login failed:', error);
+      if (error.response && error.response.data.errors) {
+        setLoginError("Incorrect Username, Password or Pin, Please try again!");
+      } else if (error.response && error.response.data.message) {
+        setLoginError(error.response.data.message);
+      } else {
+        console.error('Login failed:', error);
+      }
     }
   };
 
@@ -67,6 +76,8 @@ const LoginForm = ({ onLogin }) => {
           placeholder="Enter PIN" 
         />
       </Form.Group>
+
+      {loginError && <p className="text-danger">{loginError}</p>}
 
       <Button variant="secondary" type="submit" className="mt-3">
         Log In

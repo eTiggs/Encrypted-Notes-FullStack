@@ -5,6 +5,7 @@ import LoginRegisterForm from './components/pages/LoginRegisterForm';
 import Home from './components/pages/Home';
 import Dashboard from './components/pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import WriteNote from './components/pages/WriteNote';
 import { getToken, setToken, removeToken, isLoggedIn } from './utils/auth';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<LoginRegisterForm onLogin={handleLogin} />} />
         <Route path="/dashboard" element={<ProtectedRoute element={Dashboard} isLoggedIn={isLoggedIn()} />} />
+        <Route path="/writenote" element={<ProtectedRoute element={WriteNote} isLoggedIn={isLoggedIn()} />} />
       </Routes>
     </div>
   );
