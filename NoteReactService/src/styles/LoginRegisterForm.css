@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
