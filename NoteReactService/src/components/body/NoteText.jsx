@@ -1,21 +1,17 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
 
-const NoteText = ({ noteContent, handleNoteChange }) => {
+const NoteText = ({ content, onChange }) => {
   return (
-    <div className="write-note-form-group">
-      <h1 className="text-center">Write your note</h1>
-      <Form.Group controlId="formNoteText">
-        <Form.Control
-          as="textarea"
-          rows={4}
-          maxLength={256}
-          value={noteContent}
-          onChange={handleNoteChange}
-          placeholder="Write your note here..."
-          required
-        />
-      </Form.Group>
+    <div className="mb-3">
+      <h1>Write your note</h1>
+      <textarea 
+        className="form-control" 
+        value={content} 
+        onChange={e => onChange(e.target.value)} 
+        maxLength="128" 
+        rows="4" 
+        placeholder="Write your note here (max 128 characters)"
+      />
     </div>
   );
 };

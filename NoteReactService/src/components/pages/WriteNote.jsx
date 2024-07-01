@@ -1,72 +1,41 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import NoteText from '../body/NoteText';
 import NoteModifiers from '../body/NoteModifiers';
-import NoteService from '../../services/noteService';
+import noteService from '../../services/noteService';
 
 const WriteNote = () => {
-  const [noteContent, setNoteContent] = useState('');
-  const [timeActive, setTimeActive] = useState('5');
-  const [reads, setReads] = useState('');
+  const [content, setContent] = useState('');
+  const [timeActive, setTimeActive] = useState('1440');
+  const [maxAccessCount, setMaxAccessCount] = useState('5');
   const [infiniteReads, setInfiniteReads] = useState(false);
-
-  const handleNoteChange = (e) => {
-    setNoteContent(e.target.value);
-  };
-
-  const handleTimeChange = (e) => {
-    setTimeActive(e.target.value);
-  };
-
-  const handleReadsChange = (e) => {
-    setReads(e.target.value);
-  };
-
-  const handleInfiniteChange = (e) => {
-    setInfiniteReads(e.target.checked);
-    if (e.target.checked) {
-      setReads('');
-    }
-  };
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const noteData = {
-      content: noteContent,
-      timeActive,
-      maxAccessCount: infiniteReads ? null : reads
-    };
-
     try {
-      const response = await NoteService.createNote(noteData);
-      console.log('Note created:', response);
+      await noteService.createNote(content, timeActive, infiniteReads ? '0' : maxAccessCount);
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error creating note:', error);
     }
   };
 
   return (
-    <Container className="write-note-container">
-      <Row className="w-100 justify-content-center">
-        <Col>
-          <NoteText noteContent={noteContent} handleNoteChange={handleNoteChange} />
-        </Col>
-      </Row>
-      <Row className="write-note-mt-3 w-100 justify-content-center">
-        <Col>
-          <NoteModifiers
-            timeActive={timeActive}
-            handleTimeChange={handleTimeChange}
-            reads={reads}
-            handleReadsChange={handleReadsChange}
-            infiniteReads={infiniteReads}
-            handleInfiniteChange={handleInfiniteChange}
-            handleSubmit={handleSubmit}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <div className="write-note-container">
+      <form onSubmit={handleSubmit} className="note-form">
+        <NoteText content={content} onChange={setContent} />
+        <NoteModifiers 
+          timeActive={timeActive} 
+          setTimeActive={setTimeActive} 
+          maxAccessCount={maxAccessCount} 
+          setMaxAccessCount={setMaxAccessCount} 
+          infiniteReads={infiniteReads} 
+          setInfiniteReads={setInfiniteReads} 
+        />
+        <button type="submit" className="btn btn-primary btn-lg">Create & Encrypt Note</button>
+      </form>
+    </div>
   );
 };
 

@@ -1,26 +1,31 @@
 .write-note-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.write-note-form-group {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
+.note-form {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.write-note-form-group textarea {
-    resize: none;
+.note-form .form-label {
+  font-weight: bold;
 }
 
-.write-note-mt-3 {
-    margin-top: 1rem;
+.note-form textarea {
+  width: 100%;
+  resize: none;
 }
 
-.write-note-button {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+.note-form button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
 }
