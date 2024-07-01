@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import AuthController from '../controllers/AuthController.js';
-import AuthValidator from '../middleware/AuthValidator.js';
+import AuthValidator from '../middleware/authValidator.js';
 
 export default class AuthRouter {
     #router;
@@ -19,10 +19,6 @@ export default class AuthRouter {
                 'x-access-token, Origin, Content-Type, Accept'
             );
             next();
-        });
-
-        this.#router.get('/ping', (req, res) => {
-            res.status(200).send('pong');
         });
 
         this.#router.post(

@@ -2,8 +2,9 @@ import Server from "./src/server/Server.js";
 import Config from "./src/config/Config.js";
 import Database from "./src/db/Database.js";
 import Router from "./src/routes/Router.js";
-import AuthRouter from "./src/routes/AuthRouter.js";
-import NoteRouter from "./src/routes/NoteRouter.js";
+import AuthRouter from "./src/routes/authRouter.js";
+import NoteRouter from "./src/routes/noteRouter.js";
+import './src/utils/cronJobs.js';
 
 Config.load();
 const { PORT, HOST, DB_URI } = process.env;

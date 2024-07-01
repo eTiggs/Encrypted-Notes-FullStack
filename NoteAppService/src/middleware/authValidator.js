@@ -24,6 +24,7 @@ export default class AuthValidator {
             (req, res, next) => {
                 const errors = validationResult(req);
                 if (!errors.isEmpty()) {
+                    console.error('Validation errors:', errors.array());
                     return res.status(400).json({ errors: errors.array() });
                 }
                 next();
@@ -45,4 +46,17 @@ export default class AuthValidator {
             res.status(401).send('Unauthorized');
         }
     }
+
+    static optionalAuthenticate = (req, res, next) => {
+        const authHeader = req.header('Authorization');
+        if (authHeader) {
+            const token = authHeader.replace('Bearer ', '');
+            try {
+                const decoded = JwtUtil.verifyToken(token);
+                req.userId = decoded.id;
+            } catch (error) {
+            }
+        }
+        next();
+    };
 }
