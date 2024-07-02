@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const NotesTable = ({ notes, onSelectNote, selectedNotes }) => {
   return (
@@ -17,7 +16,7 @@ const NotesTable = ({ notes, onSelectNote, selectedNotes }) => {
           <td className="table-column">{new Date(note.expiresAt).toLocaleString()}</td>
           <td className="table-column">{note.maxAccessCount === 0 ? "Infinite" : note.maxAccessCount}</td>
           <td className="table-column-link">
-            <Link to={`https://encrypted-notes-fullstack.onrender.com/note/${note._id}`}>View Note</Link>
+            <a href={`/note/${note._id}`}>View Note</a>
           </td>
         </tr>
       ))}
