@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://encrypted-notes-fullstack.onrender.com/auth';
+const API_URL = process.env.REACT_APP_API_URL || 'http://0.0.0.0:6969/auth';
 
 const login = async (username, password, pin = '') => {
     try {
