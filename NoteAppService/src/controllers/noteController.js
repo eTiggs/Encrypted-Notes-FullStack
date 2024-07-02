@@ -32,7 +32,7 @@ export const getNote = async (req, res) => {
   try {
     const note = await Note.findById(id);
     if (!note) {
-      return res.status(404).json({ message: 'Note not found' });
+      return res.status(404).json({ message: 'Notee not found' });
     }
 
     if (note.userId !== userId) {
