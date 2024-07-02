@@ -1,5 +1,5 @@
 import Note from '../models/Note.js';
-import Encryption from '../utils/Encryption.js';
+import Encryption from '../utils/encryption.js';
 
 export const createNote = async (req, res) => {
   const { content, timeActive, maxAccessCount } = req.body;
