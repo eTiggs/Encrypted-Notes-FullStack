@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import authService from '../../services/authService';
 
 const RegisterForm = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ const RegisterForm = ({ onLogin }) => {
     setSubmitted(true);
 
     try {
-      const response = await axios.post('http://localhost:6969/auth/register', formData);
+      const response = await axios.post('https://encrypted-notes-fullstack.onrender.com', formData);
       const token = response.data.token;
       onLogin(token);
     } catch (error) {
