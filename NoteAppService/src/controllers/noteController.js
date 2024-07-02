@@ -36,10 +36,6 @@ export const getNote = async (req, res) => {
 
     if (note.userId.toString() !== userId) {
       note.accessCount += 1;
-      if (note.accessCount >= note.maxAccessCount) {
-        await note.remove();
-        return res.status(404).json({ message: 'Note expired or max access count reached' });
-      } 
       await note.save();
     }
 
