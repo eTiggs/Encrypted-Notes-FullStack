@@ -1,5 +1,5 @@
 import User from '../models/User.js';
-import JwtUtil from '../utils/Jwt.js';
+import JwtUtil from '../utils/jwt.js';
 import Hash from '../utils/Hash.js';
 
 export default class AuthService {
