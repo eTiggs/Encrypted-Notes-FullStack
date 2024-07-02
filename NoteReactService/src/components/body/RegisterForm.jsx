@@ -27,8 +27,8 @@ const RegisterForm = ({ onLogin }) => {
     setSubmitted(true);
 
     try {
-      const response = await axios.post('https://encrypted-notes-fullstack.onrender.com', formData);
-      const token = response.data.token;
+      const response = await authService.register(formData.username, formData.password, formData.pin);
+      const token = response.token;
       onLogin(token);
     } catch (error) {
       if (error.response && error.response.data.errors) {

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from '../utils/auth';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://0.0.0.0:6969/note';
+const API_URL = process.env.REACT_APP_API_URL + '/auth';
 
 const createNote = async (content, timeActive, maxAccessCount) => {
   const token = getToken();

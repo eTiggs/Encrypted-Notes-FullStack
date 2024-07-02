@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL + '/auth' || '0.0.0.0:6969';
+const API_URL = process.env.REACT_APP_API_URL + '/auth';
 
 const login = async (username, password, pin = '') => {
     try {
