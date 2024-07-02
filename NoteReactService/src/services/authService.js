@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:6969/auth';
+const API_URL = 'https://encrypted-notes-fullstack.onrender.com/auth';
 
 const login = async (username, password, pin = '') => {
     try {
