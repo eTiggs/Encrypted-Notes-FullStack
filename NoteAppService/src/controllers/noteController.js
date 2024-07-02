@@ -4,7 +4,7 @@ import Encryption from '../utils/encryption.js';
 export const createNote = async (req, res) => {
   const { content, timeActive, maxAccessCount } = req.body;
   const userId = req.userId;
-
+  
   try {
     const encryptedContent = Encryption.encryptNote(content);
     const expiresAt = new Date(Date.now() + parseInt(timeActive) * 60000);
@@ -27,6 +27,7 @@ export const createNote = async (req, res) => {
 export const getNote = async (req, res) => {
   const { id } = req.params;
   const userId = req.userId;
+  const { noteIds } = req.body;
 
   try {
     const note = await Note.findById(id);
@@ -34,9 +35,15 @@ export const getNote = async (req, res) => {
       return res.status(404).json({ message: 'Note not found' });
     }
 
-    if (note.userId.toString() !== userId) {
-      note.accessCount += 1;
-      await note.save();
+    if (note.userId !== userId) {
+      if (note.maxAccessCount > 0) {
+        note.accessCount += 1;
+        if (note.accessCount >= note.maxAccessCount) {
+          await Note.deleteMany({ _id: { $in: noteIds } });
+          return res.status(404).json({ message: 'Note expired or max access count reached' });
+        } 
+        await note.save();
+      }
     }
 
     const decryptedContent = Encryption.decryptNote(note.encryptedContent);
@@ -49,13 +56,10 @@ export const getNote = async (req, res) => {
 
 export const getAllNotes = async (req, res) => {
   const userId = req.userId;
-
+  const { noteIds } = req.body;
   try {
     const notes = await Note.find({ userId });
-    res.status(200).json(notes.map(note => ({
-      ...note._doc,
-      remainingAccesses: note.maxAccessCount - note.accessCount
-    })));
+    res.status(200).json(notes);
   } catch (error) {
     console.error('Error getting notes:', error);
     res.status(500).json({ message: 'Failed to get notes' });

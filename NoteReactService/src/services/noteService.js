@@ -25,7 +25,7 @@ const createNote = async (content, timeActive, maxAccessCount) => {
 
 const getNote = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}`);
+    const response = await axios.get(`https://encrypted-notes-fullstack.onrender.com/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error fetching note:', error);
