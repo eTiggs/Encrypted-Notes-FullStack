@@ -20,7 +20,14 @@ export default class Server {
     }
 
     #configureMiddleware() {
-        this.#app.use(cors());
+        const corsOptions = {
+            origin: 'https://encrypted-notes-fullstack-1.onrender.com',
+            methods: ['GET', 'POST', 'PUT', 'DELETE'],
+            allowedHeaders: ['Content-Type', 'Authorization'],
+            credentials: true,
+        };
+
+        this.#app.use(cors(corsOptions));
         this.#app.use(express.json());
     }
 
