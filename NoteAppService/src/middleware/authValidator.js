@@ -1,5 +1,5 @@
 import { body, validationResult } from 'express-validator';
-import JwtUtil from '../utils/Jwt.js';
+import JwtUtil from '../utils/jwt.js';
 
 export default class AuthValidator {
     static validate = () => {
