@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from '../utils/auth';
 
-const API_URL = '0.0.0.0/note';
+const API_URL = 'https://encrypted-notes-fullstack.onrender.com/note';
 
 const createNote = async (content, timeActive, maxAccessCount) => {
   const token = getToken();
