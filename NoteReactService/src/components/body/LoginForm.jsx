@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import authService from '../../services/authService';
 
 const LoginForm = ({ onLogin }) => {
   const [formData, setFormData] = useState({
@@ -25,8 +26,8 @@ const LoginForm = ({ onLogin }) => {
     setLoginError('');
 
     try {
-      const response = await axios.post('http://localhost:6969/auth/login', formData);
-      const token = response.data.token;
+      const response = await authService.login(formData.username, formData.password, formData.pin);
+      const token = response.token;
       onLogin(token);
       navigate('/dashboard');
     } catch (error) {
