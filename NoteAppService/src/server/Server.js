@@ -21,7 +21,7 @@ export default class Server {
 
     #configureMiddleware() {
         const corsOptions = {
-            origin: 'https://encrypted-notes-fullstack.onrender.com',
+            origin: 'https://encrypted-notes-fullstack-1.onrender.com',
             methods: ['GET', 'POST', 'PUT', 'DELETE'],
             allowedHeaders: ['Content-Type', 'Authorization'],
             credentials: true,
