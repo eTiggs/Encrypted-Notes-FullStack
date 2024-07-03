@@ -68,7 +68,7 @@ const LoginForm = ({ onLogin }) => {
       </Form.Group>
 
       <Form.Group controlId="formPin">
-        <Form.Label>PIN (Optional)</Form.Label>
+        <Form.Label>PIN</Form.Label>
         <Form.Control 
           type="password" 
           name="pin" 
