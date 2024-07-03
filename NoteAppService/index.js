@@ -27,3 +27,5 @@ const db = new Database(DB_URI);
         process.exit(1);
     }
 })();
+
+export default server;

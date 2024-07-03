@@ -9,6 +9,9 @@ const IV = Buffer.alloc(16, 0); // Initialization vector (16 bytes)
 
 export default class Encryption {
     static encryptNote(noteContent) {
+        if (!noteContent || typeof noteContent !== 'string') {
+            throw new TypeError('The "data" argument must be of type string');
+        }
         const cipher = crypto.createCipheriv(ALGORITHM, KEY, IV);
         let encrypted = cipher.update(noteContent, 'utf8', 'hex');
         encrypted += cipher.final('hex');

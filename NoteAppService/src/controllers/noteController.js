@@ -6,6 +6,9 @@ export const createNote = async (req, res) => {
   const userId = req.userId;
   
   try {
+    if (!content || typeof content !== 'string' || !timeActive || isNaN(timeActive) || !maxAccessCount || isNaN(maxAccessCount)) {
+      return res.status(400).json({ message: 'Failed to create note' });
+    }
     const encryptedContent = Encryption.encryptNote(content);
     const expiresAt = new Date(Date.now() + parseInt(timeActive) * 60000);
 
@@ -39,7 +42,7 @@ export const getNote = async (req, res) => {
       if (note.maxAccessCount > 0) {
         note.accessCount += 1;
         if (note.accessCount >= note.maxAccessCount) {
-          await Note.deleteMany({ _id: { $in: noteIds } });
+          await Note.deleteOne({ _id: noteIds[0] });
           return res.status(404).json({ message: 'Note expired or max access count reached' });
         } 
         await note.save();
@@ -99,6 +102,8 @@ export const updateTime = async (req, res) => {
     const note = await Note.findById(noteId);
     if (!note) {
       return res.status(404).json({ message: 'Note not found' });
+    } else if (isNaN(newExpiryTime) || newExpiryTime < 0 || newExpiryTime > 1440) {
+      return res.status(400).json({ message: 'Invalid newExpiryTime' });
     }
     note.expiresAt = new Date(note.expiresAt.getTime() + parseInt(newExpiryTime) * 60000);
     await note.save();
